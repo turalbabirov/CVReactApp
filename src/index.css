@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+   background-image: url("./assets/images/premium_photo-1661288470388-c5006797bdff.avif");
+   background-size: cover;
+   background-position: center;
+}
