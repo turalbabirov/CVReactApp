@@ -1,2 +1,3 @@
-# React + Vite
-[Link](https//cvreactapp.netlify.app) 
+# CV React App
+
+**Link:** [https://cvreactapp.netlify.app](https://cvreactapp.netlify.app)
