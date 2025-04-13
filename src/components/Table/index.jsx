@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import withErrorBoundary from "../../ErrorBoundary";
 import { reducersSync } from "../../features/cv/cvSlice";
@@ -8,11 +7,11 @@ import { reducersSync } from "../../features/cv/cvSlice";
 const Modal = ({ show, onClose, onConfirm, selectedCv }) => {
    if (!show) return null;
 
-   return ReactDOM.createPortal(
+   return (
       <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-         <div className="bg-white rounded-lg p-8 shadow-lg ">
+         <div className="bg-white rounded-lg p-8 shadow-lg">
             <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
-            <p className="mb-6">Are you sure you want to delete {selectedCv.fullName}'s CV?</p>
+            <p className="mb-6">Are you sure you want to delete {selectedCv?.fullName}'s CV?</p>
             <div className="flex justify-end gap-2">
                <button onClick={onClose} className="py-2 px-4 rounded bg-gray-400 hover:bg-gray-500 text-white">
                   Cancel
@@ -22,8 +21,7 @@ const Modal = ({ show, onClose, onConfirm, selectedCv }) => {
                </button>
             </div>
          </div>
-      </div>,
-      document.body
+      </div>
    );
 };
 
@@ -43,12 +41,12 @@ const TableComponent = () => {
    };
 
    const handleDeleteClick = (cv) => {
-      dispatch(reducersSync.deleteCv(cv.id));
       setSelectedCv(cv);
       setShowModal(true);
    };
 
    const handleConfirmDelete = () => {
+      dispatch(reducersSync.deleteCv(selectedCv.id));
       setShowModal(false);
       setSelectedCv(null);
    };
